@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,20 @@ public class VegetableService {
     // 空の場合はcontrollerでstatuscode決める際にやってやればいい(sutatuscodeを決めるのだからそのためのロジックがあるのは自然)
     // TODO: ここではinternalserverエラーのような具体的でないエラーをThrowするだけでよさそう
     public List<Vegetable> getAll(String name) {
+
         return null;
     }
 
-    public Vegetable getById(long id) {
-        return null;
+    public Vegetable getById(long id) throws Exception {
+        Optional<Vegetable> resultVegetable = this.vegetableRepository.findById(id);
+        if (resultVegetable.isPresent()) {
+            // TODO: loggerで出力
+            return resultVegetable.get();
+        }
+        if (resultVegetable.isEmpty()) {
+            return null;
+        }
+        throw new Exception();
     }
 
     public Vegetable create(Vegetable vegetable) {
