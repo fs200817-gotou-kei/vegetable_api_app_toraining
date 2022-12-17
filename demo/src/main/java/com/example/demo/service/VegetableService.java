@@ -20,8 +20,20 @@ public class VegetableService {
         return null;
     }
 
+    public Vegetable getById(long id) {
+        return null;
+    }
+
+    public Vegetable create(Vegetable vegetable) {
+        return null;
+    }
+
     // idのデータあるかチェックする(Optionalに入れる)、ない場合はnull入れてcontrollerでNotFoundExcetionで、それ以外ならThrow投げる
     public Vegetable update(long id, Vegetable vegetable) {
         return null;
+    }
+
+    public void deleteAll(long id) {
+
     }
 }
